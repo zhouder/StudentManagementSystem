@@ -535,6 +535,32 @@ void ManageMent::statistics()
 		return;
 	}
 
+	//绘制表格
+	setlinestyle(PS_SOLID, 2);
+	line(190, 145, 1090, 145);
+	for (int i = 1; i <= 9; i++)
+	{
+		line(190, 145 + i * 60, 1090, 145 + i * 60);
+	}
+	line(190, 145, 190, 685);
+	for (int i = 1; i <= 4; i++) {
+		line(190 + i * 225, 145, 190 + i * 225, 685);
+	}
+
+	//绘制表头
+	outtextxy(490, 160, "语文");
+	outtextxy(715, 160, "数学");
+	outtextxy(940, 160, "英语");	
+	outtextxy(250, 220, "平均分");
+	outtextxy(250, 280, "最高分");
+	outtextxy(250, 340, "最低分");
+	outtextxy(225, 400, "不及格人数");
+	outtextxy(205, 460, "60 - 69分人数");
+	outtextxy(205, 520, "70 - 79分人数");
+	outtextxy(205, 580, "80 - 89分人数");
+	outtextxy(215, 640, "90分以上人数");
+
+
 	// 设置标题样式和位置
 	settextstyle(50, 0, "黑体");
 	char title[50] = "学生成绩统计";
@@ -554,66 +580,66 @@ void ManageMent::statistics()
 	settextstyle(30, 0, "宋体");
 
 	// 显示数学统计信息
-	outtextxy(textX, textY, "数学成绩统计：");
+	//outtextxy(textX, textY, "数学成绩统计：");
 	textY += lineHeight;
-	outtextxy(textX, textY, ("平均分：" + std::to_string(mathStats.average)).c_str());
+	outtextxy(460, textY, (std::to_string(mathStats.average)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最高分：" + std::to_string(mathStats.max)).c_str());
+	outtextxy(510, textY, (std::to_string(mathStats.max)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最低分：" + std::to_string(mathStats.min)).c_str());
+	outtextxy(520, textY, (std::to_string(mathStats.min)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("不及格人数：" + std::to_string(mathStats.failCount)).c_str());
+	outtextxy(510, textY, (std::to_string(mathStats.failCount)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("60 - 69分人数：" + std::to_string(mathStats.count60_69)).c_str());
+	outtextxy(510, textY, ( std::to_string(mathStats.count60_69)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("70 - 79分人数：" + std::to_string(mathStats.count70_79)).c_str());
+	outtextxy(510, textY, (std::to_string(mathStats.count70_79)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("80 - 89分人数：" + std::to_string(mathStats.count80_89)).c_str());
+	outtextxy(510, textY, (std::to_string(mathStats.count80_89)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("90分以上人数：" + std::to_string(mathStats.count90_100)).c_str());
+	outtextxy(510, textY, ( std::to_string(mathStats.count90_100)).c_str());
 
 	// 显示语文统计信息
 	textX = 500;
 	textY = titleY + 110;
-	outtextxy(textX, textY, "语文成绩统计：");
+	//outtextxy(textX, textY, "语文成绩统计：");
 	textY += lineHeight;
-	outtextxy(textX, textY, ("平均分：" + std::to_string(chineseStats.average)).c_str());
+	outtextxy(685, textY, (std::to_string(chineseStats.average)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最高分：" + std::to_string(chineseStats.max)).c_str());
+	outtextxy(730, textY, (std::to_string(chineseStats.max)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最低分：" + std::to_string(chineseStats.min)).c_str());
+	outtextxy(735, textY, ( std::to_string(chineseStats.min)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("不及格人数：" + std::to_string(chineseStats.failCount)).c_str());
+	outtextxy(735, textY, (std::to_string(chineseStats.failCount)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("60 - 69分人数：" + std::to_string(chineseStats.count60_69)).c_str());
+	outtextxy(735, textY, ( std::to_string(chineseStats.count60_69)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("70 - 79分人数：" + std::to_string(chineseStats.count70_79)).c_str());
+	outtextxy(735, textY, ( std::to_string(chineseStats.count70_79)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("80 - 89分人数：" + std::to_string(chineseStats.count80_89)).c_str());
+	outtextxy(735, textY, (std::to_string(chineseStats.count80_89)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("90分以上人数：" + std::to_string(chineseStats.count90_100)).c_str());
+	outtextxy(735, textY, (std::to_string(chineseStats.count90_100)).c_str());
 	textY += lineHeight * 2;
 
 	// 显示英语统计信息
 	textX = 970;
 	textY = titleY + 110;
-	outtextxy(textX, textY, "英语成绩统计：");
+	//outtextxy(textX, textY, "英语成绩统计：");
 	textY += lineHeight;
-	outtextxy(textX, textY, ("平均分：" + std::to_string(englishStats.average)).c_str());
+	outtextxy(910, textY, (std::to_string(englishStats.average)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最高分：" + std::to_string(englishStats.max)).c_str());
+	outtextxy(950, textY, (std::to_string(englishStats.max)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("最低分：" + std::to_string(englishStats.min)).c_str());
+	outtextxy(960, textY, (std::to_string(englishStats.min)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("不及格人数：" + std::to_string(englishStats.failCount)).c_str());
+	outtextxy(960, textY, (std::to_string(englishStats.failCount)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("60 - 69分人数：" + std::to_string(englishStats.count60_69)).c_str());
+	outtextxy(960, textY, ( std::to_string(englishStats.count60_69)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("70 - 79分人数：" + std::to_string(englishStats.count70_79)).c_str());
+	outtextxy(960, textY, (std::to_string(englishStats.count70_79)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("80 - 89分人数：" + std::to_string(englishStats.count80_89)).c_str());
+	outtextxy(960, textY, ( std::to_string(englishStats.count80_89)).c_str());
 	textY += lineHeight;
-	outtextxy(textX, textY, ("90分以上人数：" + std::to_string(englishStats.count90_100)).c_str());
+	outtextxy(960, textY, ( std::to_string(englishStats.count90_100)).c_str());
 }
 
 
